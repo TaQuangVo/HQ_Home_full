@@ -1,0 +1,39 @@
+# general
+*.pem
+
+
+# keyGen folder
+/keyGen/node_modules
+/keyGen/package-lock.json
+
+
+# api folder
+/hqhome_api/package-lock.json
+/hqhome_api/node_modules
+
+
+#web folder
+/hqhome_web/node_modules
+/hqhome_web/.pnp
+/hqhome_web/.pnp.js
+
+/hqhome_web/coverage
+
+/hqhome_web/.next/
+/hqhome_web/out/
+
+/hqhome_web/build
+
+/hqhome_web/DS_Store
+
+
+/hqhome_web/npm-debug.log*
+/hqhome_web/yarn-debug.log*
+/hqhome_web/yarn-error.log*
+
+/hqhome_web/.env.local
+/hqhome_web/.env.development.local
+/hqhome_web/.env.test.local
+/hqhome_web/.env.production.local
+
+/hqhome_web/.vercel

@@ -1,0 +1,16 @@
+{
+  "name": "keygen",
+  "version": "1.0.0",
+  "description": "generate key pair to the app",
+  "main": "genKeyPair.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gen": "node genKeyPair.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "fs": "0.0.1-security"
+  }
+}
