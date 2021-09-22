@@ -1,8 +1,17 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Link from "next/link"
+import {userContext} from "../context/userContext"
+import { useContext, useEffect } from 'react'
 
 export default function Home() {
+
+  const {user} = useContext(userContext)
+
+  useEffect(() => {
+    console.log(user)
+  }, [])
+
   return (
     <div className={styles.container}>
       <Head>

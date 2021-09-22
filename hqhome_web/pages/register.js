@@ -1,13 +1,42 @@
 import Link from "next/link"
 import Styles from "../styles/Register.module.css"
+import axios from "axios"
+import {useRouter} from "next/router"
+import { useContext } from "react"
+import { userContext } from "../context/userContext"
 
 export default function register() {
 
+    const {user,setUser} = useContext(userContext)
+    const router = useRouter()
+
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        console.log(e.target.elements["username"].value)
-        console.log(e.target.elements["password"].value)
-        console.log(e.target.elements["repeatPwd"].value)
+        const uname = e.target.elements["username"].value
+        const pwd = e.target.elements["password"].value
+        const repPwd = e.target.elements["repeatPwd"].value
+        
+        if(pwd === repPwd){
+            axios.post("http://localhost:5000/api/user/register",{
+                username:uname,
+                password:pwd
+            }).then(res => {
+                setUser({
+                    user:res.data.user,
+                    credential:res.data.credential
+                })
+                console.log(res.data)
+                router.push("/member/newfeed")
+            }).catch(err => {
+                if(err.response){
+                    console.log(err.response)
+                }else if(err.request){
+                    console.log(ree.request)
+                }else{
+                    console.log(err.message)
+                }
+            })
+        }
     }
 
     return (
@@ -25,6 +54,12 @@ export default function register() {
             <Link href="/login">
                 <p className={Styles.link}>Join as an old member</p>
             </Link>
+            <Link href="/">
+                <p className={Styles.link}>Home</p>
+            </Link>
         </div>
     )
+
+
+    
 }

@@ -7,6 +7,6 @@ services:
   server:
     build: ./hqhome_api
     ports:
-      - 3000:3000
+      - 5000:5000
     links:
       - mongod
