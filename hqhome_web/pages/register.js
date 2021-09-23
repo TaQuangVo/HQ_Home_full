@@ -1,14 +1,14 @@
 import Link from "next/link"
 import Styles from "../styles/Register.module.css"
 import axios from "axios"
-import {useRouter} from "next/router"
 import { useContext } from "react"
 import { userContext } from "../context/userContext"
+import {useRouter} from "next/router"
 
-export default function register() {
+const register = () => {
 
     const {user,setUser} = useContext(userContext)
-    const router = useRouter()
+    const router = useRouter();
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
@@ -26,12 +26,11 @@ export default function register() {
                     credential:res.data.credential
                 })
                 console.log(res.data)
-                router.push("/member/newfeed")
             }).catch(err => {
                 if(err.response){
                     console.log(err.response)
                 }else if(err.request){
-                    console.log(ree.request)
+                    console.log(err.request)
                 }else{
                     console.log(err.message)
                 }
@@ -39,6 +38,11 @@ export default function register() {
         }
     }
 
+    useEffect(() => {
+        if(user){
+            router.push("/user/feed")
+        }
+    }, [])
     return (
         <div className={Styles.container}>
             <p className={Styles.tittle}>Member registration</p>
@@ -63,3 +67,4 @@ export default function register() {
 
     
 }
+export default register;
